@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/API/">
+    <Project Path="src/BG.Inventario.API/BG.Inventario.API.csproj" Id="70c21772-a961-4d04-8345-e3bb38287f77" />
+  </Folder>
+  <Folder Name="/src/Core/">
+    <Project Path="src/BG.Inventario.Application/BG.Inventario.Application.csproj" Id="61261775-6d51-4d8d-a629-ae8014a6c987" />
+    <Project Path="src/BG.Inventario.Domain/BG.Inventario.Domain.csproj" Id="1d9e2165-47de-4cf9-995c-d43b7d0c46cc" />
+  </Folder>
+  <Folder Name="/src/Infraestructure/">
+    <Project Path="src/BG.Inventario.External/BG.Inventario.External.csproj" Id="b3271db8-f2a1-4846-9732-c550ef605afc" />
+    <Project Path="src/BG.Inventario.Persistence/BG.Inventario.Persistence.csproj" Id="d7c289c2-7b07-464c-bf4b-70f77ad35d47" />
+  </Folder>
+</Solution>

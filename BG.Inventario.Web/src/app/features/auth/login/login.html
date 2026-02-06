@@ -1,0 +1,48 @@
+<div class="bg-fuct-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white px-6 py-7 rounded-lg shadow-md w-full max-w-sm">
+
+        <h2 class="text-xl font-bold text-center mb-5 text-fuct-gray-800">
+            Iniciar Sesión
+        </h2>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-4">
+
+            <!-- Usuario -->
+            <div>
+                <label for="username" class="block text-fuct-gray-700 text-sm font-semibold mb-1">
+                    Usuario
+                </label>
+
+                <input formControlName="username" type="text" id="username" class="shadow-sm appearance-none border rounded-md w-full
+                 py-2 px-3 text-fuct-gray-700
+                 " [ngClass]="{
+            'border-fuct-600 ring-fuct-600': errorLogin()
+          }" required>
+            </div>
+
+            <!-- Clave -->
+            <div>
+                <label for="password" class="block text-fuct-gray-700 text-sm font-semibold mb-1">
+                    Clave
+                </label>
+
+                <input formControlName="password" type="password" id="password" placeholder="********" class="shadow-sm appearance-none border rounded-md w-full
+                 py-2 px-3 text-fuct-gray-700
+                 " [ngClass]="{
+            'border-fuct-600 ring-fuct-600': errorLogin()
+          }" required>
+            </div>
+
+            <!-- Botón -->
+            <button type="submit" class="mt-2 bg-fuct-500 hover:bg-fuct-600 text-white font-semibold
+               py-2.5 rounded-md w-full
+               focus:outline-none focus:ring-2 focus:ring-fuct-500
+               focus:ring-offset-2 transition-colors duration-200
+               cursor-pointer
+               ">
+                Ingresar
+            </button>
+
+        </form>
+    </div>
+</div>

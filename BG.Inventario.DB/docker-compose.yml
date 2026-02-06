@@ -1,0 +1,16 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-CU21-ubuntu-22.04
+    container_name: bg_inventario_db
+    restart: always
+    ports:
+      - "1254:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=BG_1NVTAR10@26!
+      - MSSQL_PID=Developer
+    volumes:
+      - mssql_data:/var/opt/mssql
+
+volumes:
+  mssql_data:

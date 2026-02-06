@@ -1,0 +1,23 @@
+<nav class="flex items-center justify-between bg-fuct-500 h-16 px-6 shadow-md">
+
+    <!-- Título -->
+    <p class="text-white text-lg font-semibold tracking-wide">
+        Sistema de Inventario
+    </p>
+
+    <!-- Botones de navegación -->
+    <div class="flex space-x-4">
+        <button
+            [routerLink]="'/productos'"
+            class="bg-white text-fuct-500 font-semibold px-4 py-2 rounded-md shadow hover:bg-fuct-100 transition-colors duration-200 cursor-pointer">
+            Productos
+        </button>
+
+        <button
+            [routerLink]="'/proveedores'"
+            class="bg-white text-fuct-500 font-semibold px-4 py-2 rounded-md shadow hover:bg-fuct-100 transition-colors duration-200 cursor-pointer">
+            Proveedores
+        </button>
+    </div>
+
+</nav>
