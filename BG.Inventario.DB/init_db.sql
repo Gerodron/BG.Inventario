@@ -24,12 +24,14 @@ create table [Supplier] (
 	SupplierId int primary key identity,
 	Name varchar(50) not null,
 	Email varchar(50) not null
+	Status varchar(50) not null,
 );
 go
 create table [Product](
 	ProductId int primary key identity,
 	Name varchar(50) not null,
 	Description varchar(50) not null,
+	StatusProduct varchar(20) not null,
 	Status varchar(50) not null,
 	Stock int not null,
 	SalePrice  decimal(18,2) not null

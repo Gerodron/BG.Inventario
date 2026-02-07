@@ -1,6 +1,8 @@
-import { Route } from "@angular/router";
-import { routes } from "../../app.routes";
+import { Routes } from "@angular/router";
 
 export default [
-    
-] as Route
+    {
+        path:'',
+        loadComponent: () => import('./pages/list-product-supplier/products-supplier').then(x => x.ProductsSupllier)
+    }
+] as Routes

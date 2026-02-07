@@ -13,7 +13,7 @@ export const routes: Routes = [
     },
     {
         path: 'proveedores',
-        loadComponent: () => import('./features/supplier/products-supplier').then(x => x.ProductsSupllier),
+        loadChildren: () => import('./features/supplier/supplierProduct.routes'),
         canActivate: [authGuard]
     },
     {

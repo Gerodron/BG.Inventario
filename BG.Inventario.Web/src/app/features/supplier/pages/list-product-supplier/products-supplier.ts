@@ -1,7 +1,7 @@
 import { Component, inject, signal, WritableSignal } from '@angular/core';
-import { Navbar } from "../../shared/components/navbar/navbar";
-import { IProductSupplier } from '../../core/interfaces/productSupplier.interface';
-import { SupplierService } from '../../core/services/supplier/supplier.service';
+import { Navbar } from '../../../../shared/components/navbar/navbar';
+import { IProductSupplier } from '../../../../core/interfaces/productSupplier.interface';
+import { SupplierService } from '../../../../core/services/supplier/supplier.service';
 
 @Component({
   selector: 'app-products-supllier',
