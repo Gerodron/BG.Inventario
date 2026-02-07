@@ -1,6 +1,7 @@
 using AutoMapper;
 using BG.Inventario.Application.Configuration;
 using BG.Inventario.Application.Database.Product.Commands.CreateProduct;
+using BG.Inventario.Application.Database.Product.Commands.DeleteProductById;
 using BG.Inventario.Application.Database.Product.Commands.UpdateProductById;
 using BG.Inventario.Application.Database.Product.Queries.GetAllProducts;
 using BG.Inventario.Application.Database.Product.Queries.GetProductById;
@@ -29,6 +30,7 @@ namespace BG.Inventario.Application
             services.AddTransient<IGetProductSuppliersQuery, GetProductSuppliersQuery>();
             services.AddTransient<IUpdateProductByIdCommand, UpdateProductByIdCommand>();
             services.AddTransient<IGetProductByIdQuery, GetProductByIdQuery>();
+            services.AddTransient<IDeleteProductByIdCommand, DeleteProductByIdCommand>();
             return services;
         }
     }

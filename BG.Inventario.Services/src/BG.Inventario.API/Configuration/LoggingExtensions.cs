@@ -39,7 +39,7 @@ namespace BG.Inventario.API.Configuration
                     .WriteTo.File(
                         path: Path.Combine("Logs", "BG.Inventario-.log"),
                         rollingInterval: RollingInterval.Day,
-                        outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level:u3}] {Message:lj}{NewLine}{Exception}");
+                        outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level:u3}] [{SourceContext}] {Message:lj}{NewLine}{Exception}");
             });
 
             return builder;

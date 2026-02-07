@@ -1,4 +1,5 @@
 ﻿using BG.Inventario.Application.Database.Product.Commands.CreateProduct;
+using BG.Inventario.Application.Database.Product.Commands.DeleteProductById;
 using BG.Inventario.Application.Database.Product.Commands.UpdateProductById;
 using BG.Inventario.Application.Database.Product.Queries.GetAllProducts;
 using BG.Inventario.Application.Database.Product.Queries.GetProductById;
@@ -96,6 +97,25 @@ namespace BG.Inventario.API.Controllers
                 var result = await services.Execute(model);
                 return Ok(ResponseApiService.Response(StatusCodes.Status200OK, result));
 
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ResponseApiService.Response(StatusCodes.Status400BadRequest, ex.Message));
+            }
+        }
+
+        [HttpDelete("DeleteProductById")]
+        public async Task<IActionResult> DeleteProductById(
+            [FromServices] IDeleteProductByIdCommand service,
+            [FromQuery] int id
+        )
+        {
+            try
+            {
+                var result = await service.Execute(id);
+                if (!result)
+                    return StatusCode(StatusCodes.Status400BadRequest, result);
+                return Ok(ResponseApiService.Response(StatusCodes.Status200OK, result));
             }
             catch (Exception ex)
             {

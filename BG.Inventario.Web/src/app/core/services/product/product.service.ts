@@ -33,4 +33,12 @@ export class ProductService {
     );
   }
 
+  public deleteProductById(id : number){
+    const params = new HttpParams()
+      .set('id', id)
+
+    return this._http.delete<BaseResponseApi<IProduct>>(`${this.url}/api/Inventory/DeleteProductById`
+      , { params }
+    );
+  }
 }

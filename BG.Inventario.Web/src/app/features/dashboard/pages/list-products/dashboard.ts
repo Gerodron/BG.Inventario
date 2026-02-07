@@ -39,5 +39,14 @@ export class ListProducts {
     });
   }
 
+  deleteProductById(id : number){
+    this._productService.deleteProductById(id).subscribe({
+      next : (response) =>{
+        this.getAllProduct();
+      },
+      error: (err) =>{
 
+      }
+    })
+  }
 }
