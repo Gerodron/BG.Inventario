@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BaseResponseApi } from '../../interfaces/BaseResponseApi.interface';
 import { IProductSupplier } from '../../interfaces/productSupplier.interface';
+import { CreateSupplierModel } from '../../models/CreateSupplier.model';
 
 @Injectable({
   providedIn: 'root',
@@ -12,5 +13,9 @@ export class SupplierService {
 
   public getAllProductSuppliers() {
     return this._http.get<BaseResponseApi<IProductSupplier[]>>(`${this.url}/api/Inventory/GetProductSuppliers`)
+  }
+
+  public createSupplier(model: CreateSupplierModel) {
+    return this._http.post<BaseResponseApi<BaseResponseApi<boolean>>>(`${this.url}/api/Inventory/CreateSupplier`, model)
   }
 }

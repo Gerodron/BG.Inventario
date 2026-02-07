@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BG.Inventario.Domain.Entities.Supplier
+namespace BG.Inventario.Application.Database.Supplier.Commands.CreateSupplier
 {
-    public class SupplierEntity
+    public class CreateSupplierModel
     {
-        public int SupplierId { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
-        public string Status { get; set; }
     }
 }

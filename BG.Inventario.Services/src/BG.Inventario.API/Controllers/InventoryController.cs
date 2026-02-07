@@ -5,6 +5,7 @@ using BG.Inventario.Application.Database.Product.Queries.GetAllProducts;
 using BG.Inventario.Application.Database.Product.Queries.GetProductById;
 using BG.Inventario.Application.Database.ProductSuppliersSummary.Queries.GetProductSuppliers;
 using BG.Inventario.Application.Database.ProductSuppliersSummary.Queries.GetProductSuppliersById;
+using BG.Inventario.Application.Database.Supplier.Commands.CreateSupplier;
 using BG.Inventario.Application.Features;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -135,6 +136,24 @@ namespace BG.Inventario.API.Controllers
                 if (!result)
                     return StatusCode(StatusCodes.Status400BadRequest, result);
 
+                return Ok(ResponseApiService.Response(StatusCodes.Status200OK, result));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ResponseApiService.Response(StatusCodes.Status400BadRequest, ex.Message));
+            }
+        }
+
+
+        [HttpPost("CreateSupplier")]
+        public async Task<IActionResult> CreateSupplier(
+            [FromServices] ICreateSupplierCommand service,
+            [FromBody] CreateSupplierModel model
+        )
+        {
+            try
+            {
+                var result = await service.Execute(model);
                 return Ok(ResponseApiService.Response(StatusCodes.Status200OK, result));
             }
             catch (Exception ex)

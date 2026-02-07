@@ -17,7 +17,6 @@
 
   <ItemGroup>
     <Folder Include="Database\ProductSuppliersSummary\Commands\" />
-    <Folder Include="Database\Supplier\Commands\" />
     <Folder Include="Database\Supplier\Queries\" />
     <Folder Include="Database\User\Commands\" />
   </ItemGroup>

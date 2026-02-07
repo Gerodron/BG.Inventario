@@ -5,9 +5,11 @@ using BG.Inventario.Application.Database.Product.Queries.GetAllProducts.Models;
 using BG.Inventario.Application.Database.Product.Queries.GetProductById;
 using BG.Inventario.Application.Database.ProductSuppliersSummary.Queries.GetProductSuppliers;
 using BG.Inventario.Application.Database.ProductSuppliersSummary.Queries.GetProductSuppliersById;
+using BG.Inventario.Application.Database.Supplier.Commands.CreateSupplier;
 using BG.Inventario.Application.Database.User.Queries.AuthenticateUser;
 using BG.Inventario.Domain.Entities.Product;
 using BG.Inventario.Domain.Entities.ProductSuppliersSummary;
+using BG.Inventario.Domain.Entities.Supplier;
 using BG.Inventario.Domain.Entities.User;
 
 namespace BG.Inventario.Application.Configuration
@@ -23,6 +25,7 @@ namespace BG.Inventario.Application.Configuration
             CreateMap<UserEntity, AuthenticateUserResponse>().ReverseMap();
             CreateMap<ProductEntity, UpdateProducByIdModel>().ReverseMap();
             CreateMap<ProductEntity, GetProductByIdModel>().ReverseMap();
+            CreateMap<SupplierEntity, CreateSupplierModel>().ReverseMap();
         }
     }
 }

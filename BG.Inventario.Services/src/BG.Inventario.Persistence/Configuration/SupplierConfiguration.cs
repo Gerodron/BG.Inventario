@@ -13,6 +13,7 @@ namespace BG.Inventario.Persistence.Configuration
             entityBuilder.HasKey(x => x.SupplierId);
             entityBuilder.Property(x => x.Name).IsRequired();
             entityBuilder.Property(x => x.Email).IsRequired();
+            entityBuilder.Property(x => x.Status).IsRequired();
         }
     }
 }

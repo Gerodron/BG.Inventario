@@ -1,1 +1,60 @@
-<p>create-product-supplier works!</p>
+<shared-navbar />
+
+<main class="bg-fuct-gray-50 min-h-screen px-6 py-8">
+    <div class="max-w-2xl mx-auto">
+        
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="text-2xl font-bold text-fuct-gray-800">Crear Nuevo Proveedor</h2>
+            <button [routerLink]="'/proveedores'" class="text-fuct-gray-500 hover:text-fuct-gray-800 text-sm font-medium cursor-pointer">
+                ← Volver a proveedores
+            </button>
+        </div>
+
+        <div class="bg-white border border-fuct-gray-200 rounded-lg p-8 shadow-sm">
+            <form  class="space-y-5" [formGroup]="supplierForm" (ngSubmit)="onSubmit()">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-fuct-gray-700 mb-1">Nombre del Proveedor</label>
+                        <input type="text" formControlName="name" placeholder="Ej. Tech Solutions"
+                            class="w-full px-4 py-2 border border-fuct-gray-300 rounded-md focus:ring-2 focus:ring-fuct-500 outline-none transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-fuct-gray-700 mb-1">Correo Electrónico</label>
+                        <input type="email" formControlName="email" placeholder="contacto@empresa.com"
+                            class="w-full px-4 py-2 border border-fuct-gray-300 rounded-md focus:ring-2 focus:ring-fuct-500 outline-none transition-all">
+                    </div>
+                </div>
+
+                <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-fuct-gray-700 mb-1">Pedido Mínimo (Unidades)</label>
+                        <input type="number" formControlName="minOrder" min="1" placeholder="0"
+                            class="w-full px-4 py-2 border border-fuct-gray-300 rounded-md focus:ring-2 focus:ring-fuct-500 outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-fuct-gray-700 mb-1">Precio Unitario</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-2 text-fuct-gray-500">$</span>
+                            <input type="number" formControlName="productPrice" min="0" step="0.01" placeholder="0.00"
+                                class="w-full pl-7 pr-4 py-2 border border-fuct-gray-300 rounded-md focus:ring-2 focus:ring-fuct-500 outline-none">
+                        </div>
+                    </div>
+                </div> -->
+
+                
+                <div class="pt-4 flex gap-3">
+                    <button type="submit" 
+                        class="flex-1 bg-fuct-600 hover:bg-fuct-700 disabled:bg-fuct-gray-300 text-white font-bold py-2.5 rounded-md transition-colors cursor-pointer">
+                        Guardar Proveedor
+                    </button>
+                    <button type="submit" routerLink="/proveedores"
+                        class="px-6 py-2.5 border border-fuct-gray-300 text-fuct-gray-600 font-semibold rounded-md hover:bg-fuct-gray-100 transition-colors">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

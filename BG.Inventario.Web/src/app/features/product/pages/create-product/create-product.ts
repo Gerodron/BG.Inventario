@@ -32,13 +32,13 @@ export class CreateProduct {
     if (this.productForm.valid) {
       const { name, description, statusProduct, stock, salePrice } = this.productForm.value;
 
-      const product = new CreateProductModel(
-        name ?? '',
-        description ?? '',
-        statusProduct ?? 'Disponible',
-        Number(stock) ?? 0,
-        Number(salePrice) ?? 0
-      );
+        const product = new CreateProductModel(
+          name ?? '',
+          description ?? '',
+          statusProduct ?? 'Disponible',
+          Number(stock) ?? 0,
+          Number(salePrice) ?? 0
+        );
 
       this._productService.createProduct(product).subscribe({
         next: (resp) => {

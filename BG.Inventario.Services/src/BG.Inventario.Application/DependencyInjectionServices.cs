@@ -7,6 +7,7 @@ using BG.Inventario.Application.Database.Product.Queries.GetAllProducts;
 using BG.Inventario.Application.Database.Product.Queries.GetProductById;
 using BG.Inventario.Application.Database.ProductSuppliersSummary.Queries.GetProductSuppliers;
 using BG.Inventario.Application.Database.ProductSuppliersSummary.Queries.GetProductSuppliersById;
+using BG.Inventario.Application.Database.Supplier.Commands.CreateSupplier;
 using BG.Inventario.Application.Database.User.Queries.AuthenticateUser;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -31,6 +32,7 @@ namespace BG.Inventario.Application
             services.AddTransient<IUpdateProductByIdCommand, UpdateProductByIdCommand>();
             services.AddTransient<IGetProductByIdQuery, GetProductByIdQuery>();
             services.AddTransient<IDeleteProductByIdCommand, DeleteProductByIdCommand>();
+            services.AddTransient<ICreateSupplierCommand, CreateSupplierCommand>();
             return services;
         }
     }
