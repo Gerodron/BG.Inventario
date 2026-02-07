@@ -3,10 +3,11 @@
 <main class="bg-fuct-gray-50 min-h-screen px-6 py-8">
     <div class="max-w-7xl mx-auto">
 
+        <!-- Cabecera de Navegación -->
         <div class="flex items-center justify-between mb-8">
             <div>
                 <button routerLink="/proveedores"
-                    class="text-fuct-gray-500 hover:text-fuct-gray-800 text-sm font-medium mb-2 flex items-center gap-1 cursor-pointer">
+                    class="text-fuct-gray-500 hover:text-fuct-gray-800 text-sm font-medium mb-2 flex items-center gap-1 cursor-pointer transition-colors">
                     ← Volver a proveedores
                 </button>
                 <h2 class="text-2xl font-bold text-fuct-gray-800">
@@ -17,10 +18,23 @@
                 </p>
             </div>
 
-            <button
-                class="bg-fuct-600 hover:bg-fuct-700 text-white font-semibold py-2 px-4 text-sm rounded-md shadow-sm transition-colors cursor-pointer">
-                + Vincular Producto
-            </button>
+            <div class="flex gap-3">
+                <button [routerLink]="['/vincular-producto']"
+                    class="bg-white border border-fuct-gray-300 text-fuct-gray-700 hover:bg-fuct-50 font-semibold py-2 px-4 text-sm rounded-md shadow-sm transition-colors cursor-pointer flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" />
+                    </svg>
+                    Vincular Existente
+                </button>
+                
+                <button 
+                    class="bg-fuct-600 hover:bg-fuct-700 text-white font-semibold py-2 px-4 text-sm rounded-md shadow-sm transition-colors cursor-pointer flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                    Nuevo Producto
+                </button>
+            </div>
         </div>
 
         <div class="bg-white border border-fuct-gray-200 rounded-lg shadow-sm overflow-hidden">
