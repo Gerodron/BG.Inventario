@@ -17,6 +17,10 @@ export class ListProducts {
   _productService = inject(ProductService)
   _router = inject(Router)
 
+  ngOnInit() {
+    this.getAllProduct()
+  }
+  
   getAllProduct() {
     console.log('CALL getAllProduct');
 
@@ -25,8 +29,7 @@ export class ListProducts {
 
         if (res.data != null && res.success) {
           this.products.set(res.data);
-        } else {
-        }
+        } 
       },
       error: (err) => {
         console.error('API ERROR:', err);
@@ -37,25 +40,5 @@ export class ListProducts {
     });
   }
 
-  updateProductById() {
-    // const product: IProduct | undefined = this.products().find(x => x.productId == id)
-    // if (product != undefined) {
-    //   this._productService.updateProductById(product).subscribe({
-    //     next: ({success}) => {
-    //       if(success){
-    //         // console.log("ACTUALIZCION EXTIOSA")
-    //       }
-    //     },
-    //     error: (err) => {
 
-    //     }
-    //   })
-    // }
-    console.log("updateProductById")
-    this._router.navigate(['./editar-producto'])
-  }
-
-  ngOnInit() {
-    this.getAllProduct()
-  }
 }

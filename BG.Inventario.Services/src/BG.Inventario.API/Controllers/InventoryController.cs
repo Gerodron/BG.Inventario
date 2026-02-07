@@ -8,7 +8,7 @@ using BG.Inventario.Application.Features;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
+using System.Threading.Tasks;   
 
 namespace BG.Inventario.API.Controllers
 {

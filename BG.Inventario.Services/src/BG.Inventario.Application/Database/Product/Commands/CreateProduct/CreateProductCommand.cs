@@ -26,6 +26,7 @@ namespace BG.Inventario.Application.Database.Product.Commands.CreateProduct
             try
             {
                 var productEntity = _mapper.Map<ProductEntity>(model);
+                productEntity.Status = "ACTIVO";
                 await _databaseService.Product.AddAsync(productEntity);
 
                 return await _databaseService.SaveAsync();

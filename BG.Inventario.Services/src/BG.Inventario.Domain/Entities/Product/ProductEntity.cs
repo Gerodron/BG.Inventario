@@ -11,6 +11,8 @@ namespace BG.Inventario.Domain.Entities.Product
         public string Description { get; set; }
         public string Status { get; set; }
         public int Stock { get; set; }
+        public string StatusProduct { get; set; }
         public decimal SalePrice { get; set; }
+
     }
 }

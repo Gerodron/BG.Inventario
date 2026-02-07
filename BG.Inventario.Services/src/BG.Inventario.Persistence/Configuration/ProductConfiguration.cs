@@ -16,6 +16,7 @@ namespace BG.Inventario.Persistence.Configuration
             entityBuilder.Property(e => e.Status).IsRequired();
             entityBuilder.Property(e => e.Stock).IsRequired();
             entityBuilder.Property(e => e.SalePrice).IsRequired();
+            entityBuilder.Property(e => e.StatusProduct).IsRequired();
         }
     }
 }
