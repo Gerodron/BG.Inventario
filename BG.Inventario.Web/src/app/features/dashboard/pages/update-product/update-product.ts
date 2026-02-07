@@ -22,7 +22,7 @@ export class UpdateProduct {
   productForm = new FormGroup({
     name: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
-    status: new FormControl('', Validators.required),
+    statusProduct: new FormControl('', Validators.required),
     stock: new FormControl(0, Validators.required),
     salePrice: new FormControl(0, Validators.required)
   })
@@ -45,10 +45,8 @@ export class UpdateProduct {
   updateProduct(product : IProduct) {
     
     this._productService.updateProductById(product).subscribe({
-      next: ({ success }) => {
-        if (success) {
-          console.log("ACTUALIZCION EXTIOSA")
-        }
+      next: (response) => {
+
       },
       error: (err) => {
 
