@@ -31,7 +31,7 @@ namespace BG.Inventario.Application.Database.Product.Queries.GetAllProducts
             {
                 _logger.LogInformation("Iniciando consulta global de productos.");
 
-                var productEntities = await _databaseService.Product.ToListAsync();
+                var productEntities = await _databaseService.Product.Where(x => x.Status == "ACTIVE").ToListAsync() ;
 
                 return _mapper.Map<List<GetAllProductsModel>>(productEntities);
             }

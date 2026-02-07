@@ -9,7 +9,7 @@ namespace BG.Inventario.Application.Database.Product.Queries.GetAllProducts.Mode
         public int ProductId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string Status { get; set; }
+        public string StatusProduct { get; set; }
         public int Stock { get; set; }
         public int SalePrice { get; set; }
     }

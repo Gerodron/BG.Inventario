@@ -20,14 +20,13 @@ export class ListProducts {
   ngOnInit() {
     this.getAllProduct()
   }
-  
-  getAllProduct() {
-    console.log('CALL getAllProduct');
 
+  getAllProduct() {
     this._productService.getAllProducts().subscribe({
       next: (res) => {
 
         if (res.data != null && res.success) {
+          console.log(res.data)
           this.products.set(res.data);
         } 
       },

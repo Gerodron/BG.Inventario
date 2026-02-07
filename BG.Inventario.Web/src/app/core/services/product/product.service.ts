@@ -20,17 +20,17 @@ export class ProductService {
     return this._http.put<BaseResponseApi<boolean>>(`${this.url}/api/Inventory/UpdateProductById`, data);
   }
 
-    public createProduct(data: CreateProductModel) {
+  public createProduct(data: CreateProductModel) {
     return this._http.post<BaseResponseApi<boolean>>(`${this.url}/api/Inventory/CreateProduct`, data);
   }
 
-public getProductById(id: number) {
-  const params = new HttpParams()
-  .set('productId', id);
+  public getProductById(id: number) {
+    const params = new HttpParams()
+      .set('productId', id);
 
-  return this._http.get<BaseResponseApi<IProduct>>(`${this.url}/api/Inventory/GetProductById`
-    ,{ params }
-  );
-}
+    return this._http.get<BaseResponseApi<IProduct>>(`${this.url}/api/Inventory/GetProductById`
+      , { params }
+    );
+  }
 
 }
