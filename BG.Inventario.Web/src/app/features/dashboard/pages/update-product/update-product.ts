@@ -1,10 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { ProductService } from '../../../../core/services/product/product.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CreateProductModel } from '../../../../core/models/CreateProduct.model';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Navbar } from "../../../../shared/components/navbar/navbar";
+import { IProduct } from '../../../../core/interfaces/product.interface';
 
 @Component({
   selector: 'app-update-product',
@@ -16,38 +17,56 @@ export class UpdateProduct {
   _productService = inject(ProductService)
   _route = inject(ActivatedRoute);
 
+  product: WritableSignal<IProduct> = signal({} as IProduct)
+
   productForm = new FormGroup({
     name: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
     status: new FormControl('', Validators.required),
-    stock: new FormControl('', Validators.required),
-    salePrice: new FormControl('', Validators.required)
+    stock: new FormControl(0, Validators.required),
+    salePrice: new FormControl(0, Validators.required)
   })
 
+  ngOnInit() {
+    this.completeDataForm()
+  }
+
   onSubmit() {
-    const id = this._route.snapshot.paramMap.get('id');
+    if(this.productForm.valid){
+      const product : IProduct = {
+        ...this.product(),
+        ...this.productForm.value
+      } as IProduct
 
-    console.log("ID DE UPDATE" + id);
-
-    if (this.productForm.valid) {
-      const { name, description, status, stock, salePrice } = this.productForm.value;
-
-      const product = new CreateProductModel(
-        name ?? '',
-        description ?? '',
-        status ?? 'disponible',
-        Number(stock) ?? 0,
-        Number(salePrice) ?? 0
-      );
-
-      // this._productService.createProduct(product).subscribe({
-      //   next: (resp) => {
-      //     this.productForm.reset();
-      //   },
-      //   error: (err) => {
-      //     console.log("Error al crear producto " + err)
-      //   }
-      // });
+      this.updateProduct(product)
     }
+  }
+
+  updateProduct(product : IProduct) {
+    
+    this._productService.updateProductById(product).subscribe({
+      next: ({ success }) => {
+        if (success) {
+          console.log("ACTUALIZCION EXTIOSA")
+        }
+      },
+      error: (err) => {
+
+      }
+    })
+  }
+  completeDataForm() {
+    const id = this._route.snapshot.paramMap.get('id') ?? '0';
+    const idint = parseInt(id)
+
+    this._productService.getProductById(idint).subscribe({
+      next: (response) => {
+        const data = response.data;
+        if (data) {
+          this.product.set(data)
+          this.productForm.patchValue(data)
+        }
+      }
+    })
   }
 }

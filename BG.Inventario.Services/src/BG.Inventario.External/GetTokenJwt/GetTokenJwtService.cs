@@ -18,8 +18,9 @@ namespace BG.Inventario.External.GetTokenJwt
         public string Execute(string id)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = _configuration["SecretKeyJwt"] ?? string.Empty;
+            var key = _configuration["JwtConfigs:SecretKeyJwt"] ?? string.Empty;
             var signinKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
+            var expireTime = int.Parse(_configuration["JwtConfigs:ExpireTimeJwt"] ?? "5");
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
@@ -27,10 +28,10 @@ namespace BG.Inventario.External.GetTokenJwt
                 {
                     new Claim(ClaimTypes.NameIdentifier, id)
                 }),
-                Expires = DateTime.UtcNow.AddMinutes(30),
+                Expires = DateTime.UtcNow.AddMinutes(expireTime),
                 SigningCredentials = new SigningCredentials(signinKey, SecurityAlgorithms.HmacSha256Signature),
-                Issuer = _configuration["IssuerJwt"],
-                Audience = _configuration["AudienceJwt"]
+                Issuer = _configuration["JwtConfigs:IssuerJwt"],
+                Audience = _configuration["JwtConfigs:AudienceJwt"]
             };
 
             var token = tokenHandler.CreateToken(tokenDescriptor);

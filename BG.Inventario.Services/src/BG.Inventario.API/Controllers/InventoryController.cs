@@ -1,6 +1,7 @@
 ﻿using BG.Inventario.Application.Database.Product.Commands.CreateProduct;
 using BG.Inventario.Application.Database.Product.Commands.UpdateProductById;
 using BG.Inventario.Application.Database.Product.Queries.GetAllProducts;
+using BG.Inventario.Application.Database.Product.Queries.GetProductById;
 using BG.Inventario.Application.Database.ProductSuppliersSummary.Queries.GetProductSuppliers;
 using BG.Inventario.Application.Database.ProductSuppliersSummary.Queries.GetProductSuppliersById;
 using BG.Inventario.Application.Features;
@@ -24,6 +25,24 @@ namespace BG.Inventario.API.Controllers
             try
             {
                 var data = await services.Execute();
+                return Ok(ResponseApiService.Response(StatusCodes.Status200OK, data));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ResponseApiService.Response(StatusCodes.Status400BadRequest, ex.Message));
+            }
+        }
+
+        [HttpGet("GetProductById")]
+
+        public async Task<IActionResult> GetProductById(
+            [FromServices] IGetProductByIdQuery service,
+            [FromQuery] int productId
+        )
+        {
+            try
+            {
+                var data = await service.Execute(productId);
                 return Ok(ResponseApiService.Response(StatusCodes.Status200OK, data));
             }
             catch (Exception ex)

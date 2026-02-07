@@ -35,7 +35,9 @@
 
                 <div class="flex justify-end gap-2 mt-4 pt-4 border-t border-fuct-gray-100">
 
-                    <button [routerLink]="['./editar-producto', product.productId]">
+                    <button [routerLink]="['./editar-producto', product.productId]"
+                        title="Editar producto"
+                        class="p-2 text-fuct-gray-400 hover:text-red-600 hover:bg-red-50 rounded-full transition-colors cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                             stroke="currentColor" class="w-5 h-5">
                             <path stroke-linecap="round" stroke-linejoin="round"

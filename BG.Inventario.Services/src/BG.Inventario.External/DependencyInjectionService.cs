@@ -22,9 +22,9 @@ namespace BG.Inventario.External
                             ValidateAudience = true,
                             ValidateLifetime = true,
                             ValidateIssuerSigningKey = true,
-                            ValidIssuer = configuration["IssuerJwt"],
-                            ValidAudience = configuration["AudienceJwt"],
-                            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["SecretKeyJwt"] ?? string.Empty)),
+                            ValidIssuer = configuration["JwtConfigs:IssuerJwt"],
+                            ValidAudience = configuration["JwtConfigs:AudienceJwt"],
+                            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtConfigs:SecretKeyJwt"] ?? string.Empty)),
                             ClockSkew = TimeSpan.Zero
                         };
                     }); 

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { IProduct } from '../../interfaces/product.interface';
 import { BaseResponseApi } from '../../interfaces/BaseResponseApi.interface';
@@ -23,4 +23,14 @@ export class ProductService {
     public createProduct(data: CreateProductModel) {
     return this._http.post<BaseResponseApi<boolean>>(`${this.url}/api/Inventory/CreateProduct`, data);
   }
+
+public getProductById(id: number) {
+  const params = new HttpParams()
+  .set('productId', id);
+
+  return this._http.get<BaseResponseApi<IProduct>>(`${this.url}/api/Inventory/GetProductById`
+    ,{ params }
+  );
+}
+
 }
