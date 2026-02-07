@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { BaseResponseApi } from '../../interfaces/BaseResponseApi.interface';
 import { IProductSupplier } from '../../interfaces/productSupplier.interface';
 import { CreateSupplierModel } from '../../models/CreateSupplier.model';
+import { ISupplier } from '../../interfaces/supplier.inteface';
 
 @Injectable({
   providedIn: 'root',
@@ -17,5 +18,9 @@ export class SupplierService {
 
   public createSupplier(model: CreateSupplierModel) {
     return this._http.post<BaseResponseApi<BaseResponseApi<boolean>>>(`${this.url}/api/Inventory/CreateSupplier`, model)
+  }
+
+  public getAllSuppliers() {
+    return this._http.get<BaseResponseApi<ISupplier[]>>(`${this.url}/api/Inventory/GetAllSuppliers`)
   }
 }

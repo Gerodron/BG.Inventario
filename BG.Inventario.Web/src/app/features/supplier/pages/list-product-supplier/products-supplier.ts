@@ -3,6 +3,7 @@ import { Navbar } from '../../../../shared/components/navbar/navbar';
 import { IProductSupplier } from '../../../../core/interfaces/productSupplier.interface';
 import { SupplierService } from '../../../../core/services/supplier/supplier.service';
 import { RouterLink } from "@angular/router";
+import { ISupplier } from '../../../../core/interfaces/supplier.inteface';
 
 @Component({
   selector: 'app-products-supllier',
@@ -12,6 +13,7 @@ import { RouterLink } from "@angular/router";
 })
 export class ProductsSupllier {
   productSuppliers: WritableSignal<IProductSupplier[]> = signal([])
+  suppliers: WritableSignal<ISupplier[]> = signal([])
 
   _supplierService = inject(SupplierService)
 
@@ -35,7 +37,20 @@ export class ProductsSupllier {
     });
   }
 
+  getAllSuppliers() {
+    this._supplierService.getAllSuppliers().subscribe({
+      next: (res) => {
+        if (res.data != null && res.success) {
+          this.suppliers.set(res.data);
+        }
+      },
+      error: (err) => {
+      }
+    });
+  }
+
   ngOnInit() {
     this.getAllProductSuppliers()
+    this.getAllSuppliers()
   }
 }

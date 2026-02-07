@@ -43,7 +43,7 @@ namespace BG.Inventario.Application.Database.Supplier.Commands.CreateSupplier
             }
             catch (Exception ex)
             {
-                throw new Exception("Se produjo un error interno al procesar el registro del producto.", ex);
+                throw new Exception("Se produjo un error interno al procesar el registro del proveedor.", ex);
             }
         }
     }
