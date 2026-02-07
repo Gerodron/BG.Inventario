@@ -3,11 +3,13 @@ import { Navbar } from '../../../../shared/components/navbar/navbar';
 import { IProduct } from '../../../../core/interfaces/product.interface';
 import { ProductService } from '../../../../core/services/product/product.service';
 import { Router, RouterLink } from "@angular/router";
+import { CommonModule } from '@angular/common';
+
 
 
 @Component({
   selector: 'app-dashboard',
-  imports: [Navbar, RouterLink],
+  imports: [Navbar, RouterLink, CommonModule],
   templateUrl: './list-product.html',
   styleUrl: './list-product.css',
 })
