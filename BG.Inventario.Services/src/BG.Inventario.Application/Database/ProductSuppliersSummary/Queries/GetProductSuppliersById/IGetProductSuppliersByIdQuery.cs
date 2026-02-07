@@ -6,6 +6,6 @@ namespace BG.Inventario.Application.Database.ProductSuppliersSummary.Queries.Get
 {
     public interface IGetProductSuppliersByIdQuery
     {
-        Task<List<GetProductSuppliersByIdModel>> Execute(int productId);
+        Task<List<GetProductSuppliersByIdSupplierModel>> Execute(int productId);
     }
 }

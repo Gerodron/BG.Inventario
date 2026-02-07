@@ -55,15 +55,15 @@ namespace BG.Inventario.API.Controllers
             }
         }
 
-        [HttpGet("GetProductSuppliersById")]
+        [HttpGet("GetProductSuppliersBySupplierId")]
         public async Task<IActionResult> GetProductSuppliersByIdQuery(
             [FromServices] IGetProductSuppliersByIdQuery services,
-            [FromQuery] int productId
+            [FromQuery] int supplierId
         )
         {
             try
             {
-                var data = await services.Execute(productId);
+                var data = await services.Execute(supplierId);
                 return Ok(ResponseApiService.Response(StatusCodes.Status200OK, data));
             }
             catch (Exception ex)

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BG.Inventario.Application.Database.ProductSuppliersSummary.Queries.GetProductSuppliersById
 {
-    public class GetProductSuppliersByIdModel
+    public class GetProductSuppliersByIdSupplierModel
     {
         public int ProductId { get; set; }
         public int SupplierId { get; set; }

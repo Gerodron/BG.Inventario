@@ -18,26 +18,26 @@ namespace BG.Inventario.Application.Database.ProductSuppliersSummary.Queries.Get
             _logger = logger;
         }
 
-        public async Task<List<GetProductSuppliersByIdModel>> Execute(int productId)
+        public async Task<List<GetProductSuppliersByIdSupplierModel>> Execute(int supplierId)
         {
             try
             {
-                _logger.LogInformation("Consultando proveedores asociados al producto ID: {ProductId}", productId);
+                _logger.LogInformation("Consultando proveedores asociados al producto ID: {SupplierId}", supplierId);
 
                 var productSuppliers = await _databaseService.vw_ProductSupplierSumary
-                    .Where(ps => ps.ProductId == productId)
+                    .Where(ps => ps.SupplierId == supplierId)
                     .ToListAsync();
 
                 if (productSuppliers == null || !productSuppliers.Any())
                 {
-                    _logger.LogWarning("No se encontraron proveedores para el producto ID: {ProductId}", productId);
+                    _logger.LogWarning("No se encontraron proveedores para el producto ID: {SupplierId}", supplierId);
                 }
 
-                return _mapper.Map<List<GetProductSuppliersByIdModel>>(productSuppliers);
+                return _mapper.Map<List<GetProductSuppliersByIdSupplierModel>>(productSuppliers);
             }
             catch (SqlException ex)
             {
-                _logger.LogError(ex, "Error de SQL al obtener proveedores para el producto {ProductId}", productId);
+                _logger.LogError(ex, "Error de SQL al obtener proveedores para el producto {SupplierId}", supplierId);
                 throw new Exception("No se pudo recuperar la información de proveedores debido a un fallo en el servidor de datos.", ex);
             }
             catch (AutoMapperMappingException ex)

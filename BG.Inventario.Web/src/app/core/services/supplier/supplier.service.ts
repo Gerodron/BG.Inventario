@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BaseResponseApi } from '../../interfaces/BaseResponseApi.interface';
 import { IProductSupplier } from '../../interfaces/productSupplier.interface';
@@ -14,6 +14,12 @@ export class SupplierService {
 
   public getAllProductSuppliers() {
     return this._http.get<BaseResponseApi<IProductSupplier[]>>(`${this.url}/api/Inventory/GetProductSuppliers`)
+  }
+
+  public getAllProductSuppliersBySupplierId(id : number) {
+    const params = new HttpParams().set('supplierId', id)
+
+    return this._http.get<BaseResponseApi<IProductSupplier[]>>(`${this.url}/api/Inventory/GetProductSuppliersBySupplierId`, {params})
   }
 
   public createSupplier(model: CreateSupplierModel) {

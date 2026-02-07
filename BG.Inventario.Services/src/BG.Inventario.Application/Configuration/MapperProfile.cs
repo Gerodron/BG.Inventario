@@ -20,7 +20,7 @@ namespace BG.Inventario.Application.Configuration
         public MapperProfile()
         {
             CreateMap<ProductEntity, GetAllProductsModel>().ReverseMap();
-            CreateMap<ProductSuppliersSummaryEntity, GetProductSuppliersByIdModel>().ReverseMap();
+            CreateMap<ProductSuppliersSummaryEntity, GetProductSuppliersByIdSupplierModel>().ReverseMap();
             CreateMap<ProductSuppliersSummaryEntity, GetProductSuppliersModel>().ReverseMap();
             CreateMap<ProductEntity, CreateProductModel>().ReverseMap();
             CreateMap<UserEntity, AuthenticateUserResponse>().ReverseMap();
