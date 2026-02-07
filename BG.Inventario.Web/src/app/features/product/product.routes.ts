@@ -4,7 +4,7 @@ import { Routes } from '@angular/router';
 export default [
     {
         path: '',
-        loadComponent: () => import('./pages/list-products/dashboard').then(x => x.ListProducts),
+        loadComponent: () => import('./pages/list-products/list-product').then(x => x.ListProducts),
     },
     {
         path: 'crear-producto',

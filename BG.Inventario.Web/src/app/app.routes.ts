@@ -8,12 +8,12 @@ export const routes: Routes = [
     },
     {
         path: 'productos',
-        loadChildren: () => import('./features/dashboard/product.routes'),
+        loadChildren: () => import('./features/product/product.routes'),
         canActivate: [authGuard]
     },
     {
         path: 'proveedores',
-        loadComponent: () => import('./features/products-supllier/products-supllier').then(x => x.ProductsSupllier),
+        loadComponent: () => import('./features/supplier/products-supplier').then(x => x.ProductsSupllier),
         canActivate: [authGuard]
     },
     {

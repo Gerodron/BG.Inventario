@@ -8,8 +8,8 @@ import { Router, RouterLink } from "@angular/router";
 @Component({
   selector: 'app-dashboard',
   imports: [Navbar, RouterLink],
-  templateUrl: './dashboard.html',
-  styleUrl: './dashboard.css',
+  templateUrl: './list-product.html',
+  styleUrl: './list-product.css',
 })
 export class ListProducts {
   products: WritableSignal<IProduct[]> = signal([])
