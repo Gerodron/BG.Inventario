@@ -17,14 +17,14 @@ create table [User](
 	FirstName varchar(50) not null,
 	LastName varchar(50) not null,
 	UserName varchar(20) not null,
-	Password varchar(20) not null
+	Password varchar(100) not null
 );
 go
 create table [Supplier] (
 	SupplierId int primary key identity,
 	Name varchar(50) not null,
-	Email varchar(50) not null
-	Status varchar(50) not null,
+	Email varchar(50) not null,
+	Status varchar(50) not null
 );
 go
 create table [Product](
@@ -41,12 +41,11 @@ create table [Product_Supplier](
 	ProductId int not null, 
 	SupplierId int not null, 
 	PurcharsePrice decimal (18, 2) not null,
-	MinimumOrderQuantity int not null
-	
+	MinimumOrderQuantity int not null,
 	primary key (ProductId, SupplierId),
 	foreign key (ProductId) references Product(ProductId),
 	foreign key (SupplierId) references Supplier(SupplierId)
-)
+);
 go
 create view vw_ProductSupplierSumary
 as
@@ -59,7 +58,7 @@ select
     ps.MinimumOrderQuantity
 from Product_Supplier  ps
 inner join supplier s on s.SupplierId = ps.SupplierId
-inner join product p on p.ProductId = ps.ProductId
+inner join product p on p.ProductId = ps.ProductId;
 go
 insert into [User] 
  (FirstName, LastName, UserName, Password) 
@@ -68,20 +67,20 @@ values
 go
 
 -- Suppliers
-insert into [Supplier] (Name, Email) values
-('TecnoSuministros SA', 'ventas@tecnosuministros.com'),
-('Electrónica Global', 'compras@electronicaglobal.com'),
-('Insumos Industriales Ltda', 'pedidos@insumosindustriales.com'),
-('Distribuidora Nacional', 'contacto@distnacional.com');
+insert into [Supplier] (Name, Email, Status) values
+('TecnoSuministros SA', 'ventas@tecnosuministros.com', 'ACTIVE'),
+('Electrónica Global', 'compras@electronicaglobal.com', 'ACTIVE'),
+('Insumos Industriales Ltda', 'pedidos@insumosindustriales.com', 'ACTIVE'),
+('Distribuidora Nacional', 'contacto@distnacional.com', 'ACTIVE');
 go
 
--- Products
-insert into [Product] (Name, Description, Status, Stock, SalePrice) values
-('Laptop HP 15', 'Portátil 15 pulgadas, 8GB RAM', 'Activo', 25, 899.99),
-('Monitor Dell 24"', 'Monitor Full HD 24 pulgadas', 'Activo', 40, 249.50),
-('Teclado Mecánico', 'Teclado RGB switches Cherry MX', 'Activo', 60, 89.99),
-('Mouse Inalámbrico', 'Mouse ergonómico 1600 DPI', 'Activo', 100, 35.00),
-('Webcam HD 1080p', 'Cámara web con micrófono integrado', 'Activo', 30, 79.99);
+-- Products 
+insert into [Product] (Name, Description, StatusProduct, Status, Stock, SalePrice) values
+('Laptop HP 15', 'Portátil 15 pulgadas, 8GB RAM', 'Disponible', 'ACTIVE', 25, 899.99),
+('Monitor Dell 24"', 'Monitor Full HD 24 pulgadas', 'Disponible', 'ACTIVE', 40, 249.50),
+('Teclado Mecánico', 'Teclado RGB switches Cherry MX', 'Disponible', 'ACTIVE', 60, 89.99),
+('Mouse Inalámbrico', 'Mouse ergonómico 1600 DPI', 'Disponible', 'ACTIVE', 100, 35.00),
+('Webcam HD 1080p', 'Cámara web con micrófono integrado', 'Disponible', 'ACTIVE', 30, 79.99);
 go
 
 -- Product_Supplier (relación Producto-Proveedor)
